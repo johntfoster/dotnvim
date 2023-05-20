@@ -20,31 +20,31 @@ return {
       },
 
       -- optional
-      -- { 'quarto-dev/quarto-vim',
-      --   ft = 'quarto',
-      --   dependencies = { 'vim-pandoc/vim-pandoc-syntax' },
-      --   -- note: needs additional syntax highlighting enabled for markdown
-      --   --       in `nvim-treesitter`
-      --   config = function()
-      -- conceal can be tricky because both
-      -- the treesitter highlighting and the
-      -- regex vim syntax files can define conceals
-      --
-      -- -- see `:h conceallevel`
-      -- vim.opt.conceallevel = 1
-      --
-      -- -- disable conceal in markdown/quarto
-      -- vim.g['pandoc#syntax#conceal#use'] = false
-      --
-      -- -- embeds are already handled by treesitter injectons
-      -- vim.g['pandoc#syntax#codeblocks#embeds#use'] = false
-      -- vim.g['pandoc#syntax#conceal#blacklist'] = { 'codeblock_delim', 'codeblock_start' }
-      --
-      -- -- but allow some types of conceal in math regions:
-      -- -- see `:h g:tex_conceal`
-      -- vim.g['tex_conceal'] = 'gm'
-      -- --   end
-      -- },
+      { 'quarto-dev/quarto-vim',
+        ft = 'quarto',
+        dependencies = { 'vim-pandoc/vim-pandoc-syntax' },
+        -- note: needs additional syntax highlighting enabled for markdown
+        --       in `nvim-treesitter`
+        config = function()
+          -- conceal can be tricky because both
+          -- the treesitter highlighting and the
+          -- regex vim syntax files can define conceals
+          --
+          -- see `:h conceallevel`
+          vim.opt.conceallevel = 1
+
+          -- disable conceal in markdown/quarto
+          vim.g['pandoc#syntax#conceal#use'] = false
+
+          -- embeds are already handled by treesitter injectons
+          vim.g['pandoc#syntax#codeblocks#embeds#use'] = false
+          vim.g['pandoc#syntax#conceal#blacklist'] = { 'codeblock_delim', 'codeblock_start' }
+
+          -- but allow some types of conceal in math regions:
+          -- see `:h g:tex_conceal`
+          vim.g['tex_conceal'] = 'gm'
+        end
+      },
 
     },
     config = function()
@@ -86,9 +86,9 @@ return {
         },
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false,
+          -- additional_vim_regex_highlighting = false,
           -- optional (with quarto-vim extension and pandoc-syntax)
-          -- additional_vim_regex_highlighting = { 'markdown' },
+          additional_vim_regex_highlighting = { 'markdown' },
 
           -- note: the vim regex based highlighting from
           -- quarto-vim / vim-pandoc sets the wrong comment character
@@ -380,18 +380,18 @@ return {
 
       -- optional
       -- more things to try:
-      -- {
-      --   "zbirenbaum/copilot-cmp",
-      --   after = { "copilot.lua" },
-      --   dependencies = { "zbirenbaum/copilot.lua" },
-      --   config = function()
-      --     require("copilot").setup({
-      --       suggestion = { enabled = false },
-      --       panel = { enabled = false },
-      --     })
-      --     require("copilot_cmp").setup()
-      --   end
-      -- },
+      {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        dependencies = { "zbirenbaum/copilot.lua" },
+        config = function()
+          require("copilot").setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+          })
+          require("copilot_cmp").setup()
+        end
+      },
 
     },
     config = function()
@@ -472,7 +472,7 @@ return {
           },
         },
         sources = {
-          -- { name = 'copilot',                keyword_length = 0, max_item_count = 3 },
+          { name = 'copilot',                keyword_length = 0, max_item_count = 3 },
           { name = 'otter' }, -- for code chunks in quarto
           { name = 'path' },
           { name = 'nvim_lsp' },

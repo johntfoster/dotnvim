@@ -117,7 +117,7 @@ return {
   -- filetree
   { 'kyazdani42/nvim-tree.lua',
     keys = {
-      { '<c-b>', ':NvimTreeToggle<cr>' },
+      { '<leader>nt', ':NvimTreeToggle<cr>' },
     },
     config = function()
       require 'nvim-tree'.setup {
